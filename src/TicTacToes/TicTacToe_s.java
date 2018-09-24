@@ -12,7 +12,6 @@ import javax.swing.JOptionPane;
 /**
  *
  * @author aleac
- * https://www.youtube.com/watch?v=nOyPmAVtceQ&t=41s ***********************************************
  */
 public class TicTacToe_s extends javax.swing.JFrame {
     
