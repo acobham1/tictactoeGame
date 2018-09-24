@@ -49,6 +49,7 @@ public class TicTacToe_s extends javax.swing.JFrame {
 
     private void winnerCheck()
     {
+        //TODO put logic here
         String bt1 = jButton1.getText();
         String bt2 = jButton2.getText();
         String bt3 = jButton3.getText();
