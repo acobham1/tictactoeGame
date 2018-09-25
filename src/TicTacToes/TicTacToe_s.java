@@ -6,27 +6,80 @@
 package TicTacToes;
 
 import java.awt.Color;
+import java.awt.Component;
+import java.awt.Dimension;
 import javax.swing.JFrame;
 import javax.swing.JOptionPane;
+import java.awt.Graphics;
+import java.awt.Graphics2D;
+import java.awt.Insets;
+import java.awt.event.ActionEvent;
+import java.awt.event.ActionListener;
+import java.awt.geom.RoundRectangle2D;
+import javax.swing.border.AbstractBorder;
+import javax.swing.border.Border;
+
+
+
 
 /**
  *
  * @author aleac
  * https://www.youtube.com/watch?v=nOyPmAVtceQ&t=41s ***********************************************
  */
-public class TicTacToe_s extends javax.swing.JFrame {
+
+
+
+public class TicTacToe_s extends javax.swing.JFrame
+{
     
     private String startGame = "X";
     private int xCount = 0;
     private int oCount = 0;
+    boolean isWinner = false;
+    
+    ActionListener isTieListener = new ActionListener() 
+    {
+            @Override
+            public void actionPerformed(ActionEvent e) 
+            {
+              
+                //if there is no winner and all fields are filled...there is a tie
+                if(!isWinner && 
+                        (!jButton1.getText().isEmpty() && 
+                        !jButton2.getText().isEmpty() && 
+                        !jButton3.getText().isEmpty() && 
+                        !jButton4.getText().isEmpty() && 
+                        !jButton5.getText().isEmpty() && 
+                        !jButton6.getText().isEmpty() &&
+                        !jButton7.getText().isEmpty() && 
+                        !jButton8.getText().isEmpty() && 
+                        !jButton9.getText().isEmpty()
+                        )
+                ) 
+                {   
+                    System.out.println("There is a tie!");
+                }
+                else{
+                    System.out.println("Do is tie check");
+                }
+                
+
+            }
+        };
     
     /**
      * Creates new form TicTacToe_s
      */
     public TicTacToe_s() {
+        
+        
         initComponents();
+        
+//        customizeUI();
         setSize(1200,600);                  //makes the frame bigger; before only the title would pop up in the window
         setLocationRelativeTo(null);        //which means that it's centered
+        
     }
     
     private void gameScore()
@@ -63,21 +116,27 @@ public class TicTacToe_s extends javax.swing.JFrame {
         
         if(bt1 == ("X") && bt2 == ("X") && bt3 == ("X"))
         {
+            //flip the is winner boolean to show that this user has won
+            isWinner = true;
             JOptionPane.showMessageDialog(this, "Player X wins", "Tic Tac Toe: The Game", JOptionPane.INFORMATION_MESSAGE);
             xCount++;
             gameScore();
             jButton1.setBackground(Color.YELLOW);
             jButton2.setBackground(Color.YELLOW);
             jButton3.setBackground(Color.YELLOW);
+            
         }
         if(bt4 == ("X") && bt5 == ("X") && bt6 == ("X"))
         {
+            isWinner = true;
             JOptionPane.showMessageDialog(this, "Player X wins", "Tic Tac Toe: The Game", JOptionPane.INFORMATION_MESSAGE);
             xCount++;
             gameScore();
             jButton4.setBackground(Color.YELLOW);
             jButton5.setBackground(Color.YELLOW);
             jButton6.setBackground(Color.YELLOW);
+            
+            
         }
     }
     /**
@@ -89,8 +148,7 @@ public class TicTacToe_s extends javax.swing.JFrame {
     // <editor-fold defaultstate="collapsed" desc="Generated Code">//GEN-BEGIN:initComponents
     private void initComponents() {
 
-        jPanel1 = new javax.swing.JPanel();
-        jLabel1 = new javax.swing.JLabel();
+        jSplitPane1 = new javax.swing.JSplitPane();
         jPanel2 = new javax.swing.JPanel();
         jPanel3 = new javax.swing.JPanel();
         jButton1 = new javax.swing.JButton();
@@ -98,52 +156,51 @@ public class TicTacToe_s extends javax.swing.JFrame {
         jButton2 = new javax.swing.JButton();
         jPanel5 = new javax.swing.JPanel();
         jButton3 = new javax.swing.JButton();
-        jPanel6 = new javax.swing.JPanel();
-        jLabel2 = new javax.swing.JLabel();
-        jPanel7 = new javax.swing.JPanel();
-        jblPlayerX = new javax.swing.JLabel();
         jPanel8 = new javax.swing.JPanel();
         jButton4 = new javax.swing.JButton();
         jPanel9 = new javax.swing.JPanel();
         jButton5 = new javax.swing.JButton();
         jPanel10 = new javax.swing.JPanel();
         jButton6 = new javax.swing.JButton();
-        jPanel11 = new javax.swing.JPanel();
-        jLabel3 = new javax.swing.JLabel();
-        jPanel12 = new javax.swing.JPanel();
-        jblPlayerO = new javax.swing.JLabel();
         jPanel13 = new javax.swing.JPanel();
         jButton7 = new javax.swing.JButton();
         jPanel14 = new javax.swing.JPanel();
         jButton8 = new javax.swing.JButton();
         jPanel15 = new javax.swing.JPanel();
         jButton9 = new javax.swing.JButton();
-        jPanel16 = new javax.swing.JPanel();
-        reset_btn = new javax.swing.JButton();
-        jPanel17 = new javax.swing.JPanel();
+        freeFloatPanel = new javax.swing.JPanel();
+        jLabel2 = new javax.swing.JLabel();
+        jblPlayerX = new javax.swing.JLabel();
+        jLabel3 = new javax.swing.JLabel();
+        jblPlayerO = new javax.swing.JLabel();
+        jSeparator1 = new javax.swing.JSeparator();
         exit_btn = new javax.swing.JButton();
+        reset_btn = new javax.swing.JButton();
+        jPanel1 = new javax.swing.JPanel();
+        jLabel1 = new javax.swing.JLabel();
+        jToolBar1 = new javax.swing.JToolBar();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
         setTitle("Tic Tac Toe: The Game");
 
-        jPanel1.setBackground(new java.awt.Color(204, 204, 204));
-        jPanel1.setBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(0, 0, 0), 2));
-        jPanel1.setLayout(new java.awt.BorderLayout());
+        jSplitPane1.setVisible(true);
+        jSplitPane1.setMinimumSize(new Dimension(1000, getHeight()));
+        jSplitPane1.setDividerLocation(600);
+        Float weight =  ((float)600/900);
+        System.out.println("width: "+jSplitPane1.getWidth());
 
-        jLabel1.setFont(new java.awt.Font("Tahoma", 1, 100)); // NOI18N
-        jLabel1.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
-        jLabel1.setText("Tic Tac Toe");
-        jPanel1.add(jLabel1, java.awt.BorderLayout.CENTER);
-
-        getContentPane().add(jPanel1, java.awt.BorderLayout.PAGE_START);
+        jSplitPane1.setResizeWeight(weight);
 
         jPanel2.setBackground(new java.awt.Color(51, 51, 51));
-        jPanel2.setLayout(new java.awt.GridLayout(3, 5, 2, 2));
+        //jPanel2.setPreferredSize(new Dimension(640, 380));
+        jPanel2.setMinimumSize(new Dimension(800,200));
+        jPanel2.setLayout(new java.awt.GridLayout(3, 3, 2, 2));
 
         jPanel3.setBackground(new java.awt.Color(255, 255, 255));
         jPanel3.setLayout(new java.awt.BorderLayout());
 
         jButton1.setFont(new java.awt.Font("Tahoma", 1, 96)); // NOI18N
+        jButton1.addActionListener(isTieListener);
         jButton1.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 jButton1ActionPerformed(evt);
@@ -157,6 +214,7 @@ public class TicTacToe_s extends javax.swing.JFrame {
         jPanel4.setLayout(new java.awt.BorderLayout());
 
         jButton2.setFont(new java.awt.Font("Tahoma", 1, 96)); // NOI18N
+        jButton2.addActionListener(isTieListener);
         jButton2.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 jButton2ActionPerformed(evt);
@@ -170,6 +228,7 @@ public class TicTacToe_s extends javax.swing.JFrame {
         jPanel5.setLayout(new java.awt.BorderLayout());
 
         jButton3.setFont(new java.awt.Font("Tahoma", 1, 96)); // NOI18N
+        jButton3.addActionListener(isTieListener);
         jButton3.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 jButton3ActionPerformed(evt);
@@ -179,29 +238,11 @@ public class TicTacToe_s extends javax.swing.JFrame {
 
         jPanel2.add(jPanel5);
 
-        jPanel6.setBackground(new java.awt.Color(255, 255, 255));
-        jPanel6.setLayout(new java.awt.BorderLayout());
-
-        jLabel2.setFont(new java.awt.Font("Tahoma", 1, 48)); // NOI18N
-        jLabel2.setText("Player X:");
-        jPanel6.add(jLabel2, java.awt.BorderLayout.CENTER);
-
-        jPanel2.add(jPanel6);
-
-        jPanel7.setBackground(new java.awt.Color(255, 255, 255));
-        jPanel7.setLayout(new java.awt.BorderLayout());
-
-        jblPlayerX.setFont(new java.awt.Font("Tahoma", 1, 48)); // NOI18N
-        jblPlayerX.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
-        jblPlayerX.setText("jLabel4");
-        jPanel7.add(jblPlayerX, java.awt.BorderLayout.CENTER);
-
-        jPanel2.add(jPanel7);
-
         jPanel8.setBackground(new java.awt.Color(255, 255, 255));
         jPanel8.setLayout(new java.awt.BorderLayout());
 
         jButton4.setFont(new java.awt.Font("Tahoma", 1, 96)); // NOI18N
+        jButton4.addActionListener(isTieListener);
         jButton4.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 jButton4ActionPerformed(evt);
@@ -215,6 +256,7 @@ public class TicTacToe_s extends javax.swing.JFrame {
         jPanel9.setLayout(new java.awt.BorderLayout());
 
         jButton5.setFont(new java.awt.Font("Tahoma", 1, 96)); // NOI18N
+        jButton2.addActionListener(isTieListener);
         jButton5.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 jButton5ActionPerformed(evt);
@@ -228,6 +270,7 @@ public class TicTacToe_s extends javax.swing.JFrame {
         jPanel10.setLayout(new java.awt.BorderLayout());
 
         jButton6.setFont(new java.awt.Font("Tahoma", 1, 96)); // NOI18N
+        jButton6.addActionListener(isTieListener);
         jButton6.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 jButton6ActionPerformed(evt);
@@ -237,29 +280,11 @@ public class TicTacToe_s extends javax.swing.JFrame {
 
         jPanel2.add(jPanel10);
 
-        jPanel11.setBackground(new java.awt.Color(255, 255, 255));
-        jPanel11.setLayout(new java.awt.BorderLayout());
-
-        jLabel3.setFont(new java.awt.Font("Tahoma", 1, 48)); // NOI18N
-        jLabel3.setText("Player O:");
-        jPanel11.add(jLabel3, java.awt.BorderLayout.CENTER);
-
-        jPanel2.add(jPanel11);
-
-        jPanel12.setBackground(new java.awt.Color(255, 255, 255));
-        jPanel12.setLayout(new java.awt.BorderLayout());
-
-        jblPlayerO.setFont(new java.awt.Font("Tahoma", 1, 48)); // NOI18N
-        jblPlayerO.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
-        jblPlayerO.setText("jLabel5");
-        jPanel12.add(jblPlayerO, java.awt.BorderLayout.CENTER);
-
-        jPanel2.add(jPanel12);
-
         jPanel13.setBackground(new java.awt.Color(255, 255, 255));
         jPanel13.setLayout(new java.awt.BorderLayout());
 
         jButton7.setFont(new java.awt.Font("Tahoma", 1, 96)); // NOI18N
+        jButton7.addActionListener(isTieListener);
         jButton7.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 jButton7ActionPerformed(evt);
@@ -273,6 +298,7 @@ public class TicTacToe_s extends javax.swing.JFrame {
         jPanel14.setLayout(new java.awt.BorderLayout());
 
         jButton8.setFont(new java.awt.Font("Tahoma", 1, 96)); // NOI18N
+        jButton8.addActionListener(isTieListener);
         jButton8.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 jButton8ActionPerformed(evt);
@@ -286,6 +312,7 @@ public class TicTacToe_s extends javax.swing.JFrame {
         jPanel15.setLayout(new java.awt.BorderLayout());
 
         jButton9.setFont(new java.awt.Font("Tahoma", 1, 96)); // NOI18N
+        jButton9.addActionListener(isTieListener);
         jButton9.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 jButton9ActionPerformed(evt);
@@ -295,17 +322,30 @@ public class TicTacToe_s extends javax.swing.JFrame {
 
         jPanel2.add(jPanel15);
 
-        jPanel16.setBackground(new java.awt.Color(255, 255, 255));
-        jPanel16.setLayout(new java.awt.BorderLayout());
+        jSplitPane1.setLeftComponent(jPanel2);
 
-        reset_btn.setFont(new java.awt.Font("Tahoma", 1, 48)); // NOI18N
-        reset_btn.setText("Reset");
-        jPanel16.add(reset_btn, java.awt.BorderLayout.CENTER);
+        freeFloatPanel.setPreferredSize(new Dimension(50, 50));
+        freeFloatPanel.setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
+        freeFloatPanel.setMaximumSize(new Dimension(50,50));
 
-        jPanel2.add(jPanel16);
+        jLabel2.setFont(new java.awt.Font("Tahoma", 1, 48)); // NOI18N
+        jLabel2.setText("Player X:");
+        freeFloatPanel.add(jLabel2, new org.netbeans.lib.awtextra.AbsoluteConstraints(120, 20, -1, -1));
 
-        jPanel17.setBackground(new java.awt.Color(255, 255, 255));
-        jPanel17.setLayout(new java.awt.BorderLayout());
+        jblPlayerX.setFont(new java.awt.Font("Tahoma", 1, 48)); // NOI18N
+        jblPlayerX.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
+        jblPlayerX.setText("0");
+        freeFloatPanel.add(jblPlayerX, new org.netbeans.lib.awtextra.AbsoluteConstraints(220, 90, -1, -1));
+
+        jLabel3.setFont(new java.awt.Font("Tahoma", 1, 48)); // NOI18N
+        jLabel3.setText("Player O:");
+        freeFloatPanel.add(jLabel3, new org.netbeans.lib.awtextra.AbsoluteConstraints(120, 220, -1, -1));
+
+        jblPlayerO.setFont(new java.awt.Font("Tahoma", 1, 48)); // NOI18N
+        jblPlayerO.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
+        jblPlayerO.setText("0");
+        freeFloatPanel.add(jblPlayerO, new org.netbeans.lib.awtextra.AbsoluteConstraints(220, 290, -1, -1));
+        freeFloatPanel.add(jSeparator1, new org.netbeans.lib.awtextra.AbsoluteConstraints(427, 95, -1, -1));
 
         exit_btn.setFont(new java.awt.Font("Tahoma", 1, 48)); // NOI18N
         exit_btn.setText("Exit");
@@ -314,22 +354,64 @@ public class TicTacToe_s extends javax.swing.JFrame {
                 exit_btnActionPerformed(evt);
             }
         });
-        jPanel17.add(exit_btn, java.awt.BorderLayout.CENTER);
+        freeFloatPanel.add(exit_btn, new org.netbeans.lib.awtextra.AbsoluteConstraints(260, 380, -1, -1));
 
-        jPanel2.add(jPanel17);
+        reset_btn.setFont(new java.awt.Font("Tahoma", 1, 48)); // NOI18N
+        reset_btn.setText("Reset");
+        reset_btn.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                reset_btnActionPerformed(evt);
+            }
+        });
+        freeFloatPanel.add(reset_btn, new org.netbeans.lib.awtextra.AbsoluteConstraints(30, 380, -1, -1));
 
-        getContentPane().add(jPanel2, java.awt.BorderLayout.CENTER);
+        jSplitPane1.setRightComponent(freeFloatPanel);
+
+        getContentPane().add(jSplitPane1, java.awt.BorderLayout.CENTER);
+
+        jPanel1.setBackground(new java.awt.Color(204, 204, 204));
+        jPanel1.setBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(0, 0, 0), 2));
+        jPanel1.setLayout(new java.awt.BorderLayout());
+
+        jLabel1.setFont(new java.awt.Font("Tahoma", 1, 100)); // NOI18N
+        jLabel1.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
+        jLabel1.setText("Tic Tac Toe");
+        jPanel1.add(jLabel1, java.awt.BorderLayout.CENTER);
+
+        jToolBar1.setRollover(true);
+        jPanel1.add(jToolBar1, java.awt.BorderLayout.PAGE_END);
+
+        getContentPane().add(jPanel1, java.awt.BorderLayout.PAGE_START);
 
         pack();
         setLocationRelativeTo(null);
     }// </editor-fold>//GEN-END:initComponents
 
+//    private void addActionListenerForIsTie()
+//    {
+//        
+//        
+//        
+//        jButton1.addActionListener(isTieListener);
+//        jButton2.addActionListener(isTieListener);
+//        jButton3.addActionListener(isTieListener);
+//        jButton4.addActionListener(isTieListener);
+//        jButton5.addActionListener(isTieListener);
+//        jButton6.addActionListener(isTieListener);
+//        jButton7.addActionListener(isTieListener);
+//        jButton8.addActionListener(isTieListener);
+//        jButton9.addActionListener(isTieListener);
+//                  
+//    }
+    
+    
     private void jButton2ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton2ActionPerformed
         // TODO add your handling code here:
         jButton2.setText(startGame);
         if(startGame.equalsIgnoreCase("X"))
         {
             jButton2.setForeground(Color.GREEN);
+            
         }
         else
         {
@@ -353,6 +435,7 @@ private JFrame frame;
 
     private void jButton1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton1ActionPerformed
         
+        System.out.println("Button one action performed!");
         jButton1.setText(startGame);
         if(startGame.equalsIgnoreCase("X"))
         {
@@ -463,6 +546,36 @@ private JFrame frame;
         choose_A_Player();
     }//GEN-LAST:event_jButton9ActionPerformed
 
+    private void reset_btnActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_reset_btnActionPerformed
+       
+        // clear the board
+        jButton1.setText("");
+        jButton2.setText("");
+        jButton3.setText("");
+        jButton4.setText("");
+        jButton5.setText("");
+        jButton6.setText("");
+        jButton7.setText("");
+        jButton8.setText("");
+        jButton9.setText("");
+        //set the background color back to clear
+        jButton1.setBackground(Color.lightGray);
+        jButton2.setBackground(Color.lightGray);
+        jButton3.setBackground(Color.lightGray);
+        jButton4.setBackground(Color.lightGray);
+        jButton5.setBackground(Color.lightGray);
+        jButton6.setBackground(Color.lightGray);
+        jButton7.setBackground(Color.lightGray);
+        jButton8.setBackground(Color.lightGray);
+        jButton9.setBackground(Color.lightGray);
+        
+        //reset isWinner Variable to false
+        isWinner = false;
+        
+        
+        
+    }//GEN-LAST:event_reset_btnActionPerformed
+
     /**
      * @param args the command line arguments
      */
@@ -497,9 +610,13 @@ private JFrame frame;
             }
         });
     }
+    
+    
+    
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JButton exit_btn;
+    private javax.swing.JPanel freeFloatPanel;
     private javax.swing.JButton jButton1;
     private javax.swing.JButton jButton2;
     private javax.swing.JButton jButton3;
@@ -514,21 +631,18 @@ private JFrame frame;
     private javax.swing.JLabel jLabel3;
     private javax.swing.JPanel jPanel1;
     private javax.swing.JPanel jPanel10;
-    private javax.swing.JPanel jPanel11;
-    private javax.swing.JPanel jPanel12;
     private javax.swing.JPanel jPanel13;
     private javax.swing.JPanel jPanel14;
     private javax.swing.JPanel jPanel15;
-    private javax.swing.JPanel jPanel16;
-    private javax.swing.JPanel jPanel17;
     private javax.swing.JPanel jPanel2;
     private javax.swing.JPanel jPanel3;
     private javax.swing.JPanel jPanel4;
     private javax.swing.JPanel jPanel5;
-    private javax.swing.JPanel jPanel6;
-    private javax.swing.JPanel jPanel7;
     private javax.swing.JPanel jPanel8;
     private javax.swing.JPanel jPanel9;
+    private javax.swing.JSeparator jSeparator1;
+    private javax.swing.JSplitPane jSplitPane1;
+    private javax.swing.JToolBar jToolBar1;
     private javax.swing.JLabel jblPlayerO;
     private javax.swing.JLabel jblPlayerX;
     private javax.swing.JButton reset_btn;
