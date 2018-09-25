@@ -25,8 +25,9 @@ import javax.swing.border.Border;
 /**
  *
  * @author aleac
- * //Left To Do:
- * -- take out the numOfMoves
+ * @author norrisw
+ * @author raquelh
+ *
  */
 
 
@@ -34,7 +35,6 @@ import javax.swing.border.Border;
 public class TicTacToe_s extends javax.swing.JFrame
 {
     
-<<<<<<< HEAD
     private String startGame = "X";
     private int xCount = 0;
     private int oCount = 0;
@@ -45,7 +45,6 @@ public class TicTacToe_s extends javax.swing.JFrame
             @Override
             public void actionPerformed(ActionEvent e) 
             {
-              
                 //if there is no winner and all fields are filled...there is a tie
                 if(!isWinner && 
                         (!jButton1.getText().isEmpty() && 
@@ -61,6 +60,12 @@ public class TicTacToe_s extends javax.swing.JFrame
                 ) 
                 {   
                     System.out.println("There is a tie!");
+                    JOptionPane.showMessageDialog(frame, "Boohoo You Tied", "Tic Tac Toe: The Game", 
+                JOptionPane.OK_OPTION);
+                    
+                    
+                    resetGameboard();
+                    
                 }
                 else{
                     System.out.println("Do is tie check");
@@ -69,19 +74,17 @@ public class TicTacToe_s extends javax.swing.JFrame
 
             }
         };
-=======
-    private String startGame = "X";         //in new game, x is the first player
-    private int xCount = 0;                 //counts x's score
-    private int oCount = 0;                 //count's o's score
-    private int numOfMoves = 1;             //counts number of moves
+
+
     
     
->>>>>>> 337ddf1284586b8e72578042968c6bdb43069fa4
+
     
     /**
      * Creates new form TicTacToe_s
      */
-    public TicTacToe_s() {
+    public TicTacToe_s() 
+    {
         
         
         initComponents();
@@ -94,7 +97,6 @@ public class TicTacToe_s extends javax.swing.JFrame
     
     private void gameScore()
     {
-        //jblPlayerX.setText(String.valueOf(numOfMoves));
         jblPlayerX.setText(String.valueOf(xCount));
         jblPlayerO.setText(String.valueOf(oCount));
     }
@@ -111,30 +113,9 @@ public class TicTacToe_s extends javax.swing.JFrame
         }
     }
 
-    //if there's a tie
-    private void itsATie(){
-                    if(JOptionPane.showConfirmDialog(frame, "It's a tie.\nDo you want to play a new game?", "Tic Tac Toe: The Game", 
-                JOptionPane.YES_NO_OPTION) == JOptionPane.YES_NO_OPTION){
-                    //if yes
-                    jButton1.setText(" ");
-                    jButton2.setText(" ");
-                    jButton3.setText(" ");
-                    jButton4.setText(" ");
-                    jButton5.setText(" ");
-                    jButton6.setText(" ");
-                    jButton7.setText(" ");
-                    jButton8.setText(" ");
-                    jButton9.setText(" ");
-                    
-                    numOfMoves = 1;
-                    
-                    
-    }
-    }
-    
-    //if there's a winner
     private void winnerCheck() 
     {
+        
         String bt1 = jButton1.getText();
         String bt2 = jButton2.getText();
         String bt3 = jButton3.getText();
@@ -154,42 +135,41 @@ public class TicTacToe_s extends javax.swing.JFrame
         //if first row is X - (1,2,3)
         if(bt1 == ("X") && bt2 == ("X") && bt3 == ("X"))
         {
-<<<<<<< HEAD
+
             //flip the is winner boolean to show that this user has won
             isWinner = true;
-            JOptionPane.showMessageDialog(this, "Player X wins", "Tic Tac Toe: The Game", JOptionPane.INFORMATION_MESSAGE);
-=======
-            
->>>>>>> 337ddf1284586b8e72578042968c6bdb43069fa4
-            xCount++;
-            gameScore();
-            jButton1.setBackground(Color.YELLOW);
+             jButton1.setBackground(Color.YELLOW);
             jButton2.setBackground(Color.YELLOW);
             jButton3.setBackground(Color.YELLOW);
+//            JOptionPane.showMessageDialog(this, "Player X wins", "Tic Tac Toe: The Game", JOptionPane.INFORMATION_MESSAGE);
+
             
-<<<<<<< HEAD
-=======
+
+            
+
             
             frame = new JFrame("New Game");
-            if(JOptionPane.showConfirmDialog(frame, "Player X wins in " + numOfMoves + "moves. Do you want to play a new game?", "Tic Tac Toe: The Game", 
+            if(JOptionPane.showConfirmDialog(frame, "Player X wins.Do you want to play a new game?", "Tic Tac Toe: The Game", 
                 JOptionPane.YES_NO_OPTION) == JOptionPane.YES_NO_OPTION){
-                    //if yes
-                    jButton1.setBackground(new java.awt.Color(240, 240, 240));
-                    jButton2.setBackground(new java.awt.Color(240, 240, 240));
-                    jButton3.setBackground(new java.awt.Color(240, 240, 240));
-                    
-                    //resets text of each button
-                    jButton1.setText(" ");
-                    jButton2.setText(" ");
-                    jButton3.setText(" ");
-                    jButton4.setText(" ");
-                    jButton5.setText(" ");
-                    jButton6.setText(" ");
-                    jButton7.setText(" ");
-                    jButton8.setText(" ");
-                    jButton9.setText(" ");
-                    
-                    numOfMoves = 1;
+
+                resetGameboard();
+//                    //if yes
+//                    jButton1.setBackground(new java.awt.Color(240, 240, 240));
+//                    jButton2.setBackground(new java.awt.Color(240, 240, 240));
+//                    jButton3.setBackground(new java.awt.Color(240, 240, 240));
+//                    
+//                    //resets text of each button
+//                    jButton1.setText(" ");
+//                    jButton2.setText(" ");
+//                    jButton3.setText(" ");
+//                    jButton4.setText(" ");
+//                    jButton5.setText(" ");
+//                    jButton6.setText(" ");
+//                    jButton7.setText(" ");
+//                    jButton8.setText(" ");
+//                    jButton9.setText(" ");
+//                    
+
                     
                     
         }
@@ -200,32 +180,38 @@ public class TicTacToe_s extends javax.swing.JFrame
             else if(bt4 == ("X") && bt5 == ("X") && bt6 == ("X"))
         {
            
+            //flip the is winner boolean to show that this user has won
+            isWinner = true;
             xCount++;
             gameScore();
+            
             jButton4.setBackground(Color.YELLOW);
             jButton5.setBackground(Color.YELLOW);
             jButton6.setBackground(Color.YELLOW);
             
             frame = new JFrame("New Game");
-            if(JOptionPane.showConfirmDialog(frame, "Player X wins in " + numOfMoves + "moves. Do you want to play a new game?", "Tic Tac Toe: The Game", 
+            if(JOptionPane.showConfirmDialog(frame, "Player X wins. Do you want to play a new game?", "Tic Tac Toe: The Game", 
                 JOptionPane.YES_NO_OPTION) == JOptionPane.YES_NO_OPTION){
-                    //if yes
-                    jButton4.setBackground(new java.awt.Color(240, 240, 240));
-                    jButton5.setBackground(new java.awt.Color(240, 240, 240));
-                    jButton6.setBackground(new java.awt.Color(240, 240, 240));
+
+//                    //if yes
+                resetGameboard();
+//                    jButton4.setBackground(new java.awt.Color(240, 240, 240));
+//                    jButton5.setBackground(new java.awt.Color(240, 240, 240));
+//                    jButton6.setBackground(new java.awt.Color(240, 240, 240));
+//                    
+//                    //resets text of each button
+//                    jButton1.setText(" ");
+//                    jButton2.setText(" ");
+//                    jButton3.setText(" ");
+//                    jButton4.setText(" ");
+//                    jButton5.setText(" ");
+//                    jButton6.setText(" ");
+//                    jButton7.setText(" ");
+//                    jButton8.setText(" ");
+//                    jButton9.setText(" ");
+//                    
+
                     
-                    //resets text of each button
-                    jButton1.setText(" ");
-                    jButton2.setText(" ");
-                    jButton3.setText(" ");
-                    jButton4.setText(" ");
-                    jButton5.setText(" ");
-                    jButton6.setText(" ");
-                    jButton7.setText(" ");
-                    jButton8.setText(" ");
-                    jButton9.setText(" ");
-                    
-                    numOfMoves = 1;
                     
                     
         }
@@ -234,7 +220,8 @@ public class TicTacToe_s extends javax.swing.JFrame
         //3rd row is x - (7,8,9)
             else if(bt7 == ("X") && bt8 == ("X") && bt9 == ("X"))
         {
-            
+            //flip the is winner boolean to show that this user has won
+            isWinner = true;
             xCount++;
             gameScore();
             jButton7.setBackground(Color.YELLOW);
@@ -242,40 +229,40 @@ public class TicTacToe_s extends javax.swing.JFrame
             jButton9.setBackground(Color.YELLOW);
             
             frame = new JFrame("New Game");
-            if(JOptionPane.showConfirmDialog(frame, "Player X wins in " + numOfMoves + "moves. Do you want to play a new game?", "Tic Tac Toe: The Game", 
+            if(JOptionPane.showConfirmDialog(frame, "Player X wins. Do you want to play a new game?", "Tic Tac Toe: The Game", 
                 JOptionPane.YES_NO_OPTION) == JOptionPane.YES_NO_OPTION){
+//                   
                     //if yes
-                    jButton7.setBackground(new java.awt.Color(240, 240, 240));
-                    jButton8.setBackground(new java.awt.Color(240, 240, 240));
-                    jButton9.setBackground(new java.awt.Color(240, 240, 240));
-                    
-                    //resets text of each button
-                    jButton1.setText(" ");
-                    jButton2.setText(" ");
-                    jButton3.setText(" ");
-                    jButton4.setText(" ");
-                    jButton5.setText(" ");
-                    jButton6.setText(" ");
-                    jButton7.setText(" ");
-                    jButton8.setText(" ");
-                    jButton9.setText(" ");
-                    
-                    numOfMoves = 1;
+                    resetGameboard();
+//                    jButton7.setBackground(new java.awt.Color(240, 240, 240));
+//                    jButton8.setBackground(new java.awt.Color(240, 240, 240));
+//                    jButton9.setBackground(new java.awt.Color(240, 240, 240));
+//                    
+//                    //resets text of each button
+//                    jButton1.setText(" ");
+//                    jButton2.setText(" ");
+//                    jButton3.setText(" ");
+//                    jButton4.setText(" ");
+//                    jButton5.setText(" ");
+//                    jButton6.setText(" ");
+//                    jButton7.setText(" ");
+//                    jButton8.setText(" ");
+//                    jButton9.setText(" ");
+//                    
+
                    
                     
->>>>>>> 337ddf1284586b8e72578042968c6bdb43069fa4
+
         }
         }
                 
         //1st column is x (1,4,7)
             else if(bt1 == ("X") && bt4 == ("X") && bt7 == ("X"))
         {
-<<<<<<< HEAD
+
             isWinner = true;
             JOptionPane.showMessageDialog(this, "Player X wins", "Tic Tac Toe: The Game", JOptionPane.INFORMATION_MESSAGE);
-=======
-            
->>>>>>> 337ddf1284586b8e72578042968c6bdb43069fa4
+
             xCount++;
             gameScore();
             jButton1.setBackground(Color.YELLOW);
@@ -283,25 +270,26 @@ public class TicTacToe_s extends javax.swing.JFrame
             jButton7.setBackground(Color.YELLOW);
             
             frame = new JFrame("New Game");
-            if(JOptionPane.showConfirmDialog(frame, "Player X wins in " + numOfMoves + "moves. Do you want to play a new game?", "Tic Tac Toe: The Game", 
+            if(JOptionPane.showConfirmDialog(frame, "Player X wins. Do you want to play a new game?", "Tic Tac Toe: The Game", 
                 JOptionPane.YES_NO_OPTION) == JOptionPane.YES_NO_OPTION){
-                    //if yes
-                    jButton1.setBackground(new java.awt.Color(240, 240, 240));
-                    jButton4.setBackground(new java.awt.Color(240, 240, 240));
-                    jButton7.setBackground(new java.awt.Color(240, 240, 240));
-                    
-                    //resets text of each button
-                    jButton1.setText(" ");
-                    jButton2.setText(" ");
-                    jButton3.setText(" ");
-                    jButton4.setText(" ");
-                    jButton5.setText(" ");
-                    jButton6.setText(" ");
-                    jButton7.setText(" ");
-                    jButton8.setText(" ");
-                    jButton9.setText(" ");
-                    
-                    numOfMoves = 1;
+//                    //if yes
+                resetGameboard();
+//                    jButton1.setBackground(new java.awt.Color(240, 240, 240));
+//                    jButton4.setBackground(new java.awt.Color(240, 240, 240));
+//                    jButton7.setBackground(new java.awt.Color(240, 240, 240));
+//                    
+//                    //resets text of each button
+//                    jButton1.setText(" ");
+//                    jButton2.setText(" ");
+//                    jButton3.setText(" ");
+//                    jButton4.setText(" ");
+//                    jButton5.setText(" ");
+//                    jButton6.setText(" ");
+//                    jButton7.setText(" ");
+//                    jButton8.setText(" ");
+//                    jButton9.setText(" ");
+//                    
+
                     
                     
         }
@@ -310,7 +298,8 @@ public class TicTacToe_s extends javax.swing.JFrame
         //2nd column is x (2,5,8)
             else if(bt2 == ("X") && bt5 == ("X") && bt8 == ("X"))
         {
-            
+            //flip the is winner boolean to show that this user has won
+            isWinner = true;
             xCount++;
             gameScore();
             jButton2.setBackground(Color.YELLOW);
@@ -318,25 +307,26 @@ public class TicTacToe_s extends javax.swing.JFrame
             jButton8.setBackground(Color.YELLOW);
             
             frame = new JFrame("New Game");
-            if(JOptionPane.showConfirmDialog(frame, "Player X wins in " + numOfMoves + "moves. Do you want to play a new game?", "Tic Tac Toe: The Game", 
+            if(JOptionPane.showConfirmDialog(frame, "Player X wins. Do you want to play a new game?", "Tic Tac Toe: The Game", 
                 JOptionPane.YES_NO_OPTION) == JOptionPane.YES_NO_OPTION){
                     //if yes
-                    jButton2.setBackground(new java.awt.Color(240, 240, 240));
-                    jButton5.setBackground(new java.awt.Color(240, 240, 240));
-                    jButton8.setBackground(new java.awt.Color(240, 240, 240));
-                    
-                    //resets text of each button
-                    jButton1.setText(" ");
-                    jButton2.setText(" ");
-                    jButton3.setText(" ");
-                    jButton4.setText(" ");
-                    jButton5.setText(" ");
-                    jButton6.setText(" ");
-                    jButton7.setText(" ");
-                    jButton8.setText(" ");
-                    jButton9.setText(" ");
-                    
-                    numOfMoves = 1;
+                    resetGameboard();
+//                    jButton2.setBackground(new java.awt.Color(240, 240, 240));
+//                    jButton5.setBackground(new java.awt.Color(240, 240, 240));
+//                    jButton8.setBackground(new java.awt.Color(240, 240, 240));
+//                    
+//                    //resets text of each button
+//                    jButton1.setText(" ");
+//                    jButton2.setText(" ");
+//                    jButton3.setText(" ");
+//                    jButton4.setText(" ");
+//                    jButton5.setText(" ");
+//                    jButton6.setText(" ");
+//                    jButton7.setText(" ");
+//                    jButton8.setText(" ");
+//                    jButton9.setText(" ");
+//                    
+
                     
                     
         }
@@ -346,6 +336,8 @@ public class TicTacToe_s extends javax.swing.JFrame
             else if(bt3 == ("X") && bt6 == ("X") && bt9 == ("X"))
         {
             
+            //flip the is winner boolean to show that this user has won
+            isWinner = true;
             xCount++;
             gameScore();
             jButton3.setBackground(Color.YELLOW);
@@ -353,25 +345,26 @@ public class TicTacToe_s extends javax.swing.JFrame
             jButton9.setBackground(Color.YELLOW);
             
             frame = new JFrame("New Game");
-            if(JOptionPane.showConfirmDialog(frame, "Player X wins in " + numOfMoves + "moves. Do you want to play a new game?", "Tic Tac Toe: The Game", 
+            if(JOptionPane.showConfirmDialog(frame, "Player X wins. Do you want to play a new game?", "Tic Tac Toe: The Game", 
                 JOptionPane.YES_NO_OPTION) == JOptionPane.YES_NO_OPTION){
-                    //if yes
-                    jButton3.setBackground(new java.awt.Color(240, 240, 240));
-                    jButton6.setBackground(new java.awt.Color(240, 240, 240));
-                    jButton9.setBackground(new java.awt.Color(240, 240, 240));
-                    
-                    //resets text of each button
-                    jButton1.setText(" ");
-                    jButton2.setText(" ");
-                    jButton3.setText(" ");
-                    jButton4.setText(" ");
-                    jButton5.setText(" ");
-                    jButton6.setText(" ");
-                    jButton7.setText(" ");
-                    jButton8.setText(" ");
-                    jButton9.setText(" ");
-                    
-                    numOfMoves = 1;
+//                    //if yes
+                resetGameboard();
+//                    jButton3.setBackground(new java.awt.Color(240, 240, 240));
+//                    jButton6.setBackground(new java.awt.Color(240, 240, 240));
+//                    jButton9.setBackground(new java.awt.Color(240, 240, 240));
+//                    
+//                    //resets text of each button
+//                    jButton1.setText(" ");
+//                    jButton2.setText(" ");
+//                    jButton3.setText(" ");
+//                    jButton4.setText(" ");
+//                    jButton5.setText(" ");
+//                    jButton6.setText(" ");
+//                    jButton7.setText(" ");
+//                    jButton8.setText(" ");
+//                    jButton9.setText(" ");
+//                    
+
                     
                    
         }
@@ -381,6 +374,8 @@ public class TicTacToe_s extends javax.swing.JFrame
             else if(bt1 == ("X") && bt5 == ("X") && bt9 == ("X"))
         {
             
+            //flip the is winner boolean to show that this user has won
+            isWinner = true;
             xCount++;
             gameScore();
             jButton1.setBackground(Color.YELLOW);
@@ -388,25 +383,26 @@ public class TicTacToe_s extends javax.swing.JFrame
             jButton9.setBackground(Color.YELLOW);
             
             frame = new JFrame("New Game");
-            if(JOptionPane.showConfirmDialog(frame, "Player X wins in " + numOfMoves + "moves. Do you want to play a new game?", "Tic Tac Toe: The Game", 
+            if(JOptionPane.showConfirmDialog(frame, "Player X wins.Do you want to play a new game?", "Tic Tac Toe: The Game", 
                 JOptionPane.YES_NO_OPTION) == JOptionPane.YES_NO_OPTION){
-                    //if yes
-                    jButton1.setBackground(new java.awt.Color(240, 240, 240));
-                    jButton5.setBackground(new java.awt.Color(240, 240, 240));
-                    jButton9.setBackground(new java.awt.Color(240, 240, 240));
-                    
-                    //resets text of each button
-                    jButton1.setText(" ");
-                    jButton2.setText(" ");
-                    jButton3.setText(" ");
-                    jButton4.setText(" ");
-                    jButton5.setText(" ");
-                    jButton6.setText(" ");
-                    jButton7.setText(" ");
-                    jButton8.setText(" ");
-                    jButton9.setText(" ");
-                    
-                    numOfMoves = 1;
+//                    //if yes
+                    resetGameboard();
+//                    jButton1.setBackground(new java.awt.Color(240, 240, 240));
+//                    jButton5.setBackground(new java.awt.Color(240, 240, 240));
+//                    jButton9.setBackground(new java.awt.Color(240, 240, 240));
+//                    
+//                    //resets text of each button
+//                    jButton1.setText(" ");
+//                    jButton2.setText(" ");
+//                    jButton3.setText(" ");
+//                    jButton4.setText(" ");
+//                    jButton5.setText(" ");
+//                    jButton6.setText(" ");
+//                    jButton7.setText(" ");
+//                    jButton8.setText(" ");
+//                    jButton9.setText(" ");
+//                    
+
                     
                     
         }
@@ -415,6 +411,8 @@ public class TicTacToe_s extends javax.swing.JFrame
             else if(bt3 == ("X") && bt5 == ("X") && bt7 == ("X"))
         {
            
+            //flip the is winner boolean to show that this user has won
+            isWinner = true;
             xCount++;
             gameScore();
             jButton3.setBackground(Color.YELLOW);
@@ -422,26 +420,27 @@ public class TicTacToe_s extends javax.swing.JFrame
             jButton7.setBackground(Color.YELLOW);
             
             frame = new JFrame("New Game");
-            if(JOptionPane.showConfirmDialog(frame, "Player X wins in " + numOfMoves + "moves. Do you want to play a new game?", "Tic Tac Toe: The Game", 
+            if(JOptionPane.showConfirmDialog(frame, "Player X wins. Do you want to play a new game?", "Tic Tac Toe: The Game", 
                 JOptionPane.YES_NO_OPTION) == JOptionPane.YES_NO_OPTION){
-                    //if yes
-                    jButton3.setBackground(new java.awt.Color(240, 240, 240));
-                    jButton5.setBackground(new java.awt.Color(240, 240, 240));
-                    jButton7.setBackground(new java.awt.Color(240, 240, 240));
-                    
-                    //resets text of each button
-                    jButton1.setText(" ");
-                    jButton2.setText(" ");
-                    jButton3.setText(" ");
-                    jButton4.setText(" ");
-                    jButton5.setText(" ");
-                    jButton6.setText(" ");
-                    jButton7.setText(" ");
-                    jButton8.setText(" ");
-                    jButton9.setText(" ");
-                    
-                    numOfMoves = 1;
-                   
+//                    //if yes
+                    resetGameboard();
+//                    jButton3.setBackground(new java.awt.Color(240, 240, 240));
+//                    jButton5.setBackground(new java.awt.Color(240, 240, 240));
+//                    jButton7.setBackground(new java.awt.Color(240, 240, 240));
+//                    
+//                    //resets text of each button
+//                    jButton1.setText(" ");
+//                    jButton2.setText(" ");
+//                    jButton3.setText(" ");
+//                    jButton4.setText(" ");
+//                    jButton5.setText(" ");
+//                    jButton6.setText(" ");
+//                    jButton7.setText(" ");
+//                    jButton8.setText(" ");
+//                    jButton9.setText(" ");
+//                    
+
+//                   
                  
         }
         }
@@ -454,6 +453,8 @@ public class TicTacToe_s extends javax.swing.JFrame
             else if(bt1 == ("O") && bt2 == ("O") && bt3 == ("O"))
         {
            
+            //flip the is winner boolean to show that this user has won
+            isWinner = true;
             oCount++;
             gameScore();
             jButton1.setBackground(Color.YELLOW);
@@ -461,26 +462,27 @@ public class TicTacToe_s extends javax.swing.JFrame
             jButton3.setBackground(Color.YELLOW);
             
             frame = new JFrame("New Game");
-            if(JOptionPane.showConfirmDialog(frame, "Player O wins in " + numOfMoves + "moves. Do you want to play a new game?", "Tic Tac Toe: The Game", 
+            if(JOptionPane.showConfirmDialog(frame, "Player O wins. Do you want to play a new game?", "Tic Tac Toe: The Game", 
                 JOptionPane.YES_NO_OPTION) == JOptionPane.YES_NO_OPTION){
-                    //if yes
-                    jButton1.setBackground(new java.awt.Color(240, 240, 240));
-                    jButton2.setBackground(new java.awt.Color(240, 240, 240));
-                    jButton3.setBackground(new java.awt.Color(240, 240, 240));
-                    
-                    //resets text of each button
-                    jButton1.setText(" ");
-                    jButton2.setText(" ");
-                    jButton3.setText(" ");
-                    jButton4.setText(" ");
-                    jButton5.setText(" ");
-                    jButton6.setText(" ");
-                    jButton7.setText(" ");
-                    jButton8.setText(" ");
-                    jButton9.setText(" ");
-                    
-                    numOfMoves = 1;
-                    
+//                    //if yes
+                        resetGameboard();
+//                    jButton1.setBackground(new java.awt.Color(240, 240, 240));
+//                    jButton2.setBackground(new java.awt.Color(240, 240, 240));
+//                    jButton3.setBackground(new java.awt.Color(240, 240, 240));
+//                    
+//                    //resets text of each button
+//                    jButton1.setText(" ");
+//                    jButton2.setText(" ");
+//                    jButton3.setText(" ");
+//                    jButton4.setText(" ");
+//                    jButton5.setText(" ");
+//                    jButton6.setText(" ");
+//                    jButton7.setText(" ");
+//                    jButton8.setText(" ");
+//                    jButton9.setText(" ");
+//                    
+
+//                    
                   
         }
         }
@@ -489,6 +491,8 @@ public class TicTacToe_s extends javax.swing.JFrame
             else if(bt4 == ("O") && bt5 == ("O") && bt6 == ("O"))
         {
             
+            //flip the is winner boolean to show that this user has won
+            isWinner = true;
             oCount++;
             gameScore();
             jButton4.setBackground(Color.YELLOW);
@@ -496,25 +500,26 @@ public class TicTacToe_s extends javax.swing.JFrame
             jButton6.setBackground(Color.YELLOW);
             
             frame = new JFrame("New Game");
-            if(JOptionPane.showConfirmDialog(frame, "Player O wins in " + numOfMoves + "moves. Do you want to play a new game?", "Tic Tac Toe: The Game", 
+            if(JOptionPane.showConfirmDialog(frame, "Player O wins. Do you want to play a new game?", "Tic Tac Toe: The Game", 
                 JOptionPane.YES_NO_OPTION) == JOptionPane.YES_NO_OPTION){
-                    //if yes
-                    jButton4.setBackground(new java.awt.Color(240, 240, 240));
-                    jButton5.setBackground(new java.awt.Color(240, 240, 240));
-                    jButton6.setBackground(new java.awt.Color(240, 240, 240));
-                    
-                    //resets text of each button
-                    jButton1.setText(" ");
-                    jButton2.setText(" ");
-                    jButton3.setText(" ");
-                    jButton4.setText(" ");
-                    jButton5.setText(" ");
-                    jButton6.setText(" ");
-                    jButton7.setText(" ");
-                    jButton8.setText(" ");
-                    jButton9.setText(" ");
-                    
-                    numOfMoves = 1;
+//                    //if yes
+                        resetGameboard();
+//                    jButton4.setBackground(new java.awt.Color(240, 240, 240));
+//                    jButton5.setBackground(new java.awt.Color(240, 240, 240));
+//                    jButton6.setBackground(new java.awt.Color(240, 240, 240));
+//                    
+//                    //resets text of each button
+//                    jButton1.setText(" ");
+//                    jButton2.setText(" ");
+//                    jButton3.setText(" ");
+//                    jButton4.setText(" ");
+//                    jButton5.setText(" ");
+//                    jButton6.setText(" ");
+//                    jButton7.setText(" ");
+//                    jButton8.setText(" ");
+//                    jButton9.setText(" ");
+//                    
+
                    
                    
         }
@@ -524,6 +529,8 @@ public class TicTacToe_s extends javax.swing.JFrame
             else if(bt7 == ("0") && bt8 == ("O") && bt9 == ("O"))
         {
           
+            //flip the is winner boolean to show that this user has won
+            isWinner = true;
             oCount++;
             gameScore();
             jButton7.setBackground(Color.YELLOW);
@@ -531,25 +538,26 @@ public class TicTacToe_s extends javax.swing.JFrame
             jButton9.setBackground(Color.YELLOW);
             
             frame = new JFrame("New Game");
-            if(JOptionPane.showConfirmDialog(frame, "Player O wins in " + numOfMoves + "moves. Do you want to play a new game?", "Tic Tac Toe: The Game", 
+            if(JOptionPane.showConfirmDialog(frame, "Player O wins. Do you want to play a new game?", "Tic Tac Toe: The Game", 
                 JOptionPane.YES_NO_OPTION) == JOptionPane.YES_NO_OPTION){
-                    //if yes
-                    jButton7.setBackground(new java.awt.Color(240, 240, 240));
-                    jButton8.setBackground(new java.awt.Color(240, 240, 240));
-                    jButton9.setBackground(new java.awt.Color(240, 240, 240));
-                    
-                    //resets text of each button
-                    jButton1.setText(" ");
-                    jButton2.setText(" ");
-                    jButton3.setText(" ");
-                    jButton4.setText(" ");
-                    jButton5.setText(" ");
-                    jButton6.setText(" ");
-                    jButton7.setText(" ");
-                    jButton8.setText(" ");
-                    jButton9.setText(" ");
-                    
-                    numOfMoves = 1;
+//                    //if yes
+                    resetGameboard();
+//                    jButton7.setBackground(new java.awt.Color(240, 240, 240));
+//                    jButton8.setBackground(new java.awt.Color(240, 240, 240));
+//                    jButton9.setBackground(new java.awt.Color(240, 240, 240));
+//                    
+//                    //resets text of each button
+//                    jButton1.setText(" ");
+//                    jButton2.setText(" ");
+//                    jButton3.setText(" ");
+//                    jButton4.setText(" ");
+//                    jButton5.setText(" ");
+//                    jButton6.setText(" ");
+//                    jButton7.setText(" ");
+//                    jButton8.setText(" ");
+//                    jButton9.setText(" ");
+//                    
+
                     
         }
         }
@@ -557,7 +565,9 @@ public class TicTacToe_s extends javax.swing.JFrame
         //1st column is o (1,4,7)
             else if(bt1 == ("O") && bt4 == ("O") && bt7 == ("O"))
         {
-                      
+                 
+            //flip the is winner boolean to show that this user has won
+            isWinner = true;
             oCount++;
             gameScore();
             jButton1.setBackground(Color.YELLOW);
@@ -565,26 +575,27 @@ public class TicTacToe_s extends javax.swing.JFrame
             jButton7.setBackground(Color.YELLOW);
             
             frame = new JFrame("New Game");
-            if(JOptionPane.showConfirmDialog(frame, "Player O wins in " + numOfMoves + "moves. Do you want to play a new game?", "Tic Tac Toe: The Game", 
+            if(JOptionPane.showConfirmDialog(frame, "Player O win. Do you want to play a new game?", "Tic Tac Toe: The Game", 
                 JOptionPane.YES_NO_OPTION) == JOptionPane.YES_NO_OPTION){
-                    //if yes
-                    jButton1.setBackground(new java.awt.Color(240, 240, 240));
-                    jButton4.setBackground(new java.awt.Color(240, 240, 240));
-                    jButton7.setBackground(new java.awt.Color(240, 240, 240));
-                    
-                    //resets text of each button
-                    jButton1.setText(" ");
-                    jButton2.setText(" ");
-                    jButton3.setText(" ");
-                    jButton4.setText(" ");
-                    jButton5.setText(" ");
-                    jButton6.setText(" ");
-                    jButton7.setText(" ");
-                    jButton8.setText(" ");
-                    jButton9.setText(" ");
-                    
-                    numOfMoves = 1;
-              
+//                    //if yes
+                        resetGameboard();
+//                    jButton1.setBackground(new java.awt.Color(240, 240, 240));
+//                    jButton4.setBackground(new java.awt.Color(240, 240, 240));
+//                    jButton7.setBackground(new java.awt.Color(240, 240, 240));
+//                    
+//                    //resets text of each button
+//                    jButton1.setText(" ");
+//                    jButton2.setText(" ");
+//                    jButton3.setText(" ");
+//                    jButton4.setText(" ");
+//                    jButton5.setText(" ");
+//                    jButton6.setText(" ");
+//                    jButton7.setText(" ");
+//                    jButton8.setText(" ");
+//                    jButton9.setText(" ");
+//                    
+
+//              
                    
         }
         }
@@ -593,6 +604,8 @@ public class TicTacToe_s extends javax.swing.JFrame
        else if(bt2 == ("O") && bt5 == ("O") && bt8 == ("O"))
         {
            
+            //flip the is winner boolean to show that this user has won
+            isWinner = true;
             oCount++;
             gameScore();
             jButton2.setBackground(Color.YELLOW);
@@ -600,25 +613,26 @@ public class TicTacToe_s extends javax.swing.JFrame
             jButton8.setBackground(Color.YELLOW);
             
             frame = new JFrame("New Game");
-            if(JOptionPane.showConfirmDialog(frame, "Player O wins in " + numOfMoves + "moves. Do you want to play a new game?", "Tic Tac Toe: The Game", 
+            if(JOptionPane.showConfirmDialog(frame, "Player O wins. Do you want to play a new game?", "Tic Tac Toe: The Game", 
                 JOptionPane.YES_NO_OPTION) == JOptionPane.YES_NO_OPTION){
-                    //if yes
-                    jButton2.setBackground(new java.awt.Color(240, 240, 240));
-                    jButton5.setBackground(new java.awt.Color(240, 240, 240));
-                    jButton8.setBackground(new java.awt.Color(240, 240, 240));
-                    
-                    //resets text of each button
-                    jButton1.setText(" ");
-                    jButton2.setText(" ");
-                    jButton3.setText(" ");
-                    jButton4.setText(" ");
-                    jButton5.setText(" ");
-                    jButton6.setText(" ");
-                    jButton7.setText(" ");
-                    jButton8.setText(" ");
-                    jButton9.setText(" ");
-                    
-                    numOfMoves = 1;
+//                    //if yes
+                resetGameboard();
+//                    jButton2.setBackground(new java.awt.Color(240, 240, 240));
+//                    jButton5.setBackground(new java.awt.Color(240, 240, 240));
+//                    jButton8.setBackground(new java.awt.Color(240, 240, 240));
+//                    
+//                    //resets text of each button
+//                    jButton1.setText(" ");
+//                    jButton2.setText(" ");
+//                    jButton3.setText(" ");
+//                    jButton4.setText(" ");
+//                    jButton5.setText(" ");
+//                    jButton6.setText(" ");
+//                    jButton7.setText(" ");
+//                    jButton8.setText(" ");
+//                    jButton9.setText(" ");
+//                    
+
                   
                     
         }
@@ -627,38 +641,37 @@ public class TicTacToe_s extends javax.swing.JFrame
          //3rd column is o (3,6,9)
             else if(bt3 == ("O") && bt6 == ("O") && bt9 == ("O"))
         {
-            
+            //flip the is winner boolean to show that this user has won
+            isWinner = true;
             oCount++;
             gameScore();
             jButton3.setBackground(Color.YELLOW);
             jButton6.setBackground(Color.YELLOW);
-<<<<<<< HEAD
-            
-            
-=======
+
             jButton9.setBackground(Color.YELLOW);
             
             frame = new JFrame("New Game");
-            if(JOptionPane.showConfirmDialog(frame, "Player O wins in " + numOfMoves + "moves. Do you want to play a new game?", "Tic Tac Toe: The Game", 
+            if(JOptionPane.showConfirmDialog(frame, "Player O wins. Do you want to play a new game?", "Tic Tac Toe: The Game", 
                 JOptionPane.YES_NO_OPTION) == JOptionPane.YES_NO_OPTION){
-                    //if yes
-                    jButton3.setBackground(new java.awt.Color(240, 240, 240));
-                    jButton6.setBackground(new java.awt.Color(240, 240, 240));
-                    jButton9.setBackground(new java.awt.Color(240, 240, 240));
-                    
-                    //resets text of each button
-                    jButton1.setText(" ");
-                    jButton2.setText(" ");
-                    jButton3.setText(" ");
-                    jButton4.setText(" ");
-                    jButton5.setText(" ");
-                    jButton6.setText(" ");
-                    jButton7.setText(" ");
-                    jButton8.setText(" ");
-                    jButton9.setText(" ");
-                    
-                    numOfMoves = 1;
-                    
+//                    //if yes
+                       resetGameboard();
+//                    jButton3.setBackground(new java.awt.Color(240, 240, 240));
+//                    jButton6.setBackground(new java.awt.Color(240, 240, 240));
+//                    jButton9.setBackground(new java.awt.Color(240, 240, 240));
+//                    
+//                    //resets text of each button
+//                    jButton1.setText(" ");
+//                    jButton2.setText(" ");
+//                    jButton3.setText(" ");
+//                    jButton4.setText(" ");
+//                    jButton5.setText(" ");
+//                    jButton6.setText(" ");
+//                    jButton7.setText(" ");
+//                    jButton8.setText(" ");
+//                    jButton9.setText(" ");
+//                    
+
+//                    
                     
         }
         }
@@ -666,7 +679,8 @@ public class TicTacToe_s extends javax.swing.JFrame
           //if diagonal is o starting from jButton1 or jButton9 (1,5,9)
         if(bt1 == ("O") && bt5 == ("O") && bt9 == ("O"))
         {
-            
+            //flip the is winner boolean to show that this user has won
+            isWinner = true;
             oCount++;
             gameScore();
             jButton1.setBackground(Color.YELLOW);
@@ -674,25 +688,26 @@ public class TicTacToe_s extends javax.swing.JFrame
             jButton9.setBackground(Color.YELLOW);
             
             frame = new JFrame("New Game");
-            if(JOptionPane.showConfirmDialog(frame, "Player O wins in " + numOfMoves + "moves. Do you want to play a new game?", "Tic Tac Toe: The Game", 
+            if(JOptionPane.showConfirmDialog(frame, "Player O wins. Do you want to play a new game?", "Tic Tac Toe: The Game", 
                 JOptionPane.YES_NO_OPTION) == JOptionPane.YES_NO_OPTION){
-                    //if yes
-                    jButton1.setBackground(new java.awt.Color(240, 240, 240));
-                    jButton5.setBackground(new java.awt.Color(240, 240, 240));
-                    jButton9.setBackground(new java.awt.Color(240, 240, 240));
-                    
-                    //resets text of each button
-                    jButton1.setText(" ");
-                    jButton2.setText(" ");
-                    jButton3.setText(" ");
-                    jButton4.setText(" ");
-                    jButton5.setText(" ");
-                    jButton6.setText(" ");
-                    jButton7.setText(" ");
-                    jButton8.setText(" ");
-                    jButton9.setText(" ");
-                    
-                    numOfMoves = 1;
+//                    //if yes
+                    resetGameboard();
+//                    jButton1.setBackground(new java.awt.Color(240, 240, 240));
+//                    jButton5.setBackground(new java.awt.Color(240, 240, 240));
+//                    jButton9.setBackground(new java.awt.Color(240, 240, 240));
+//                    
+//                    //resets text of each button
+//                    jButton1.setText(" ");
+//                    jButton2.setText(" ");
+//                    jButton3.setText(" ");
+//                    jButton4.setText(" ");
+//                    jButton5.setText(" ");
+//                    jButton6.setText(" ");
+//                    jButton7.setText(" ");
+//                    jButton8.setText(" ");
+//                    jButton9.setText(" ");
+//                    
+
                    
                     
         }
@@ -701,7 +716,8 @@ public class TicTacToe_s extends javax.swing.JFrame
         //if diagonal is o starting from jButton3 or 7  (3,5,7)
         else if(bt3 == ("O") && bt5 == ("O") && bt7 == ("O"))
         {
-            
+            //flip the is winner boolean to show that this user has won
+            isWinner = true;
             oCount++;
             gameScore();
             jButton3.setBackground(Color.YELLOW);
@@ -709,33 +725,66 @@ public class TicTacToe_s extends javax.swing.JFrame
             jButton7.setBackground(Color.YELLOW);
             
             frame = new JFrame("New Game");
-            if(JOptionPane.showConfirmDialog(frame, "Player O wins in " + numOfMoves + "moves. Do you want to play a new game?", "Tic Tac Toe: The Game", 
+            if(JOptionPane.showConfirmDialog(frame, "Player O wins. Do you want to play a new game?", "Tic Tac Toe: The Game", 
                 JOptionPane.YES_NO_OPTION) == JOptionPane.YES_NO_OPTION){
-                    //if yes
-                    jButton3.setBackground(new java.awt.Color(240, 240, 240));
-                    jButton5.setBackground(new java.awt.Color(240, 240, 240));
-                    jButton7.setBackground(new java.awt.Color(240, 240, 240));
+//                    //if yes
+                       resetGameboard();
+//                    jButton3.setBackground(new java.awt.Color(240, 240, 240));
+//                    jButton5.setBackground(new java.awt.Color(240, 240, 240));
+//                    jButton7.setBackground(new java.awt.Color(240, 240, 240));
+//                    
+//                    //resets text of each button
+//                    jButton1.setText(" ");
+//                    jButton2.setText(" ");
+//                    jButton3.setText(" ");
+//                    jButton4.setText(" ");
+//                    jButton5.setText(" ");
+//                    jButton6.setText(" ");
+//                    jButton7.setText(" ");
+//                    jButton8.setText(" ");
+//                    jButton9.setText(" ");
+//                    
+
                     
-                    //resets text of each button
-                    jButton1.setText(" ");
-                    jButton2.setText(" ");
-                    jButton3.setText(" ");
-                    jButton4.setText(" ");
-                    jButton5.setText(" ");
-                    jButton6.setText(" ");
-                    jButton7.setText(" ");
-                    jButton8.setText(" ");
-                    jButton9.setText(" ");
                     
-                    numOfMoves = 1;
-                    
-                    
->>>>>>> 337ddf1284586b8e72578042968c6bdb43069fa4
+
         }
         }
         
     
+        //if user wins, disable gameboard
+        if(isWinner)
+        {
+            disableGameboard();
+        }
         
+    }
+    
+    
+    private void disableGameboard()
+    {
+        jButton1.setEnabled(false);
+        jButton2.setEnabled(false);
+        jButton3.setEnabled(false);
+        jButton4.setEnabled(false);
+        jButton5.setEnabled(false);
+        jButton6.setEnabled(false);
+        jButton7.setEnabled(false);
+        jButton8.setEnabled(false);
+        jButton9.setEnabled(false);
+    }
+    
+    private void enableGameboard()
+    {
+        jButton1.setEnabled(true);
+        jButton2.setEnabled(true);
+        jButton3.setEnabled(true);
+        jButton4.setEnabled(true);
+        jButton5.setEnabled(true);
+        jButton6.setEnabled(true);
+        jButton7.setEnabled(true);
+        jButton8.setEnabled(true);
+        jButton9.setEnabled(true);
     }
         
         
@@ -796,11 +845,10 @@ public class TicTacToe_s extends javax.swing.JFrame
         jSplitPane1.setResizeWeight(weight);
 
         jPanel2.setBackground(new java.awt.Color(51, 51, 51));
-<<<<<<< HEAD
+
         //jPanel2.setPreferredSize(new Dimension(640, 380));
         jPanel2.setMinimumSize(new Dimension(800,200));
-=======
->>>>>>> 337ddf1284586b8e72578042968c6bdb43069fa4
+
         jPanel2.setLayout(new java.awt.GridLayout(3, 3, 2, 2));
 
         jPanel3.setBackground(new java.awt.Color(255, 255, 255));
@@ -845,28 +893,27 @@ public class TicTacToe_s extends javax.swing.JFrame
 
         jPanel2.add(jPanel5);
 
-<<<<<<< HEAD
-=======
-        jPanel6.setBackground(new java.awt.Color(255, 255, 255));
-        jPanel6.setLayout(new java.awt.BorderLayout());
+
+        // jPanel6.setBackground(new java.awt.Color(255, 255, 255));
+        // jPanel6.setLayout(new java.awt.BorderLayout());
 
         jLabel2.setFont(new java.awt.Font("Tahoma", 1, 48)); // NOI18N
         jLabel2.setText("Player X:");
-        jPanel6.add(jLabel2, java.awt.BorderLayout.CENTER);
+        // jPanel6.add(jLabel2, java.awt.BorderLayout.CENTER);
 
-        jPanel2.add(jPanel6);
+        // jPanel2.add(jPanel6);
 
-        jPanel7.setBackground(new java.awt.Color(255, 255, 255));
-        jPanel7.setLayout(new java.awt.BorderLayout());
+        // jPanel7.setBackground(new java.awt.Color(255, 255, 255));
+        // jPanel7.setLayout(new java.awt.BorderLayout());
 
         jblPlayerX.setFont(new java.awt.Font("Tahoma", 1, 48)); // NOI18N
         jblPlayerX.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
         jblPlayerX.setText("0");
-        jPanel7.add(jblPlayerX, java.awt.BorderLayout.CENTER);
+        // jPanel7.add(jblPlayerX, java.awt.BorderLayout.CENTER);
 
-        jPanel2.add(jPanel7);
+        // jPanel2.add(jPanel7);
 
->>>>>>> 337ddf1284586b8e72578042968c6bdb43069fa4
+
         jPanel8.setBackground(new java.awt.Color(255, 255, 255));
         jPanel8.setLayout(new java.awt.BorderLayout());
 
@@ -909,28 +956,27 @@ public class TicTacToe_s extends javax.swing.JFrame
 
         jPanel2.add(jPanel10);
 
-<<<<<<< HEAD
-=======
-        jPanel11.setBackground(new java.awt.Color(255, 255, 255));
-        jPanel11.setLayout(new java.awt.BorderLayout());
+
+        // jPanel11.setBackground(new java.awt.Color(255, 255, 255));
+        // jPanel11.setLayout(new java.awt.BorderLayout());
 
         jLabel3.setFont(new java.awt.Font("Tahoma", 1, 48)); // NOI18N
         jLabel3.setText("Player O:");
-        jPanel11.add(jLabel3, java.awt.BorderLayout.CENTER);
+        // jPanel11.add(jLabel3, java.awt.BorderLayout.CENTER);
 
-        jPanel2.add(jPanel11);
+        // jPanel2.add(jPanel11);
 
-        jPanel12.setBackground(new java.awt.Color(255, 255, 255));
-        jPanel12.setLayout(new java.awt.BorderLayout());
+        // jPanel12.setBackground(new java.awt.Color(255, 255, 255));
+        // jPanel12.setLayout(new java.awt.BorderLayout());
 
         jblPlayerO.setFont(new java.awt.Font("Tahoma", 1, 48)); // NOI18N
         jblPlayerO.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
         jblPlayerO.setText("0");
-        jPanel12.add(jblPlayerO, java.awt.BorderLayout.CENTER);
+        // jPanel12.add(jblPlayerO, java.awt.BorderLayout.CENTER);
 
-        jPanel2.add(jPanel12);
+        // jPanel2.add(jPanel12);
 
->>>>>>> 337ddf1284586b8e72578042968c6bdb43069fa4
+
         jPanel13.setBackground(new java.awt.Color(255, 255, 255));
         jPanel13.setLayout(new java.awt.BorderLayout());
 
@@ -1038,7 +1084,7 @@ public class TicTacToe_s extends javax.swing.JFrame
         setLocationRelativeTo(null);
     }// </editor-fold>//GEN-END:initComponents
 
-<<<<<<< HEAD
+
 //    private void addActionListenerForIsTie()
 //    {
 //        
@@ -1057,26 +1103,22 @@ public class TicTacToe_s extends javax.swing.JFrame
 //    }
     
     
-    private void jButton2ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton2ActionPerformed
-        // TODO add your handling code here:
-        jButton2.setText(startGame);
-        if(startGame.equalsIgnoreCase("X"))
-        {
-            jButton2.setForeground(Color.GREEN);
-            
-        }
-        else
-        {
-            jButton2.setForeground(Color.BLUE);
-        }
-        choose_A_Player();
-        winnerCheck();
-    }//GEN-LAST:event_jButton2ActionPerformed
+//    private void jButton2ActionPerformed(java.awt.event.ActionEvent evt) {                                         
+//        // TODO add your handling code here:
+//        jButton2.setText(startGame);
+//        if(startGame.equalsIgnoreCase("X"))
+//        {
+//            jButton2.setForeground(Color.GREEN);
+//            
+//        }
+//        else
+//        {
+//            jButton2.setForeground(Color.BLUE);
+//        }
+//        choose_A_Player();
+//        winnerCheck();
+//    }                                        
 private JFrame frame;
-=======
-    
-  private JFrame frame;
->>>>>>> 337ddf1284586b8e72578042968c6bdb43069fa4
     private void exit_btnActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_exit_btnActionPerformed
         //Creates small popup frame to asks the users to confirm 
         //exiting the game
@@ -1089,25 +1131,22 @@ private JFrame frame;
         
     }//GEN-LAST:event_exit_btnActionPerformed
 
-<<<<<<< HEAD
-    private void jButton1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton1ActionPerformed
-        
-        System.out.println("Button one action performed!");
-        jButton1.setText(startGame);
-        if(startGame.equalsIgnoreCase("X"))
-        {
-            jButton1.setForeground(Color.GREEN);
-        }
-        else
-        {
-            jButton1.setForeground(Color.BLUE);
-        }
-        choose_A_Player();
-        winnerCheck();
-    }//GEN-LAST:event_jButton1ActionPerformed
+//    private void jButton1ActionPerformed(java.awt.event.ActionEvent evt) {                                         
+//        
+//        System.out.println("Button one action performed!");
+//        jButton1.setText(startGame);
+//        if(startGame.equalsIgnoreCase("X"))
+//        {
+//            jButton1.setForeground(Color.GREEN);
+//        }
+//        else
+//        {
+//            jButton1.setForeground(Color.BLUE);
+//        }
+//        choose_A_Player();
+//        winnerCheck();
+//    }                                        
 
-=======
->>>>>>> 337ddf1284586b8e72578042968c6bdb43069fa4
     private void jButton3ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton3ActionPerformed
         jButton3.setText(startGame);
         if(startGame.equalsIgnoreCase("X"))
@@ -1119,10 +1158,7 @@ private JFrame frame;
             jButton3.setForeground(Color.BLUE);
         }
         choose_A_Player();
-        
-        
         winnerCheck();
-       
     }//GEN-LAST:event_jButton3ActionPerformed
 
     private void jButton4ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton4ActionPerformed
@@ -1136,8 +1172,6 @@ private JFrame frame;
             jButton4.setForeground(Color.BLUE);
         }
         choose_A_Player();
-        
-       
         winnerCheck();
     }//GEN-LAST:event_jButton4ActionPerformed
 
@@ -1152,8 +1186,6 @@ private JFrame frame;
             jButton5.setForeground(Color.BLUE);
         }
         choose_A_Player();
-        
-        
         winnerCheck();
     }//GEN-LAST:event_jButton5ActionPerformed
 
@@ -1168,10 +1200,7 @@ private JFrame frame;
             jButton6.setForeground(Color.BLUE);
         }
         choose_A_Player();
-        
-       
         winnerCheck();
-        
     }//GEN-LAST:event_jButton6ActionPerformed
 
     private void jButton7ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton7ActionPerformed
@@ -1185,10 +1214,7 @@ private JFrame frame;
             jButton7.setForeground(Color.BLUE);
         }
         choose_A_Player();
-        
-        
         winnerCheck();
-        
     }//GEN-LAST:event_jButton7ActionPerformed
 
     private void jButton8ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton8ActionPerformed
@@ -1202,10 +1228,7 @@ private JFrame frame;
             jButton8.setForeground(Color.BLUE);
         }
         choose_A_Player();
-        
-        
         winnerCheck();
-        
     }//GEN-LAST:event_jButton8ActionPerformed
 
     private void jButton9ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton9ActionPerformed
@@ -1225,10 +1248,16 @@ private JFrame frame;
         
     }//GEN-LAST:event_jButton9ActionPerformed
 
-<<<<<<< HEAD
     private void reset_btnActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_reset_btnActionPerformed
        
-        // clear the board
+       resetGameboard();
+        
+        
+        
+    }//GEN-LAST:event_reset_btnActionPerformed
+    private void resetGameboard()
+    {
+         // clear the board
         jButton1.setText("");
         jButton2.setText("");
         jButton3.setText("");
@@ -1251,11 +1280,11 @@ private JFrame frame;
         
         //reset isWinner Variable to false
         isWinner = false;
+        enableGameboard();
         
-        
-        
-    }//GEN-LAST:event_reset_btnActionPerformed
-=======
+         
+    }
+    
     
     private void jButton2ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton2ActionPerformed
         jButton2.setText(startGame);
@@ -1288,7 +1317,7 @@ private JFrame frame;
         
         winnerCheck();
     }//GEN-LAST:event_jButton1ActionPerformed
->>>>>>> 337ddf1284586b8e72578042968c6bdb43069fa4
+
 
     /**
      * @param args the command line arguments
@@ -1362,4 +1391,3 @@ private JFrame frame;
     private javax.swing.JButton reset_btn;
     // End of variables declaration//GEN-END:variables
 }
-
